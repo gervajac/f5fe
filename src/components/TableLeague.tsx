@@ -243,7 +243,11 @@ export function TableLeague() {
           </div>
         ) : null}
         {nextMatch && (
-          <NextMatch actualize={() => setRefresh(true)} nextMatch={nextMatch} />
+          <NextMatch
+            actualize={() => setRefresh(true)}
+            nextMatch={nextMatch}
+            admin={admin}
+          />
         )}
         <div className="flex flex-row w-full bg-green-300 h-[40px] border-b-2 border-white">
           <div className="flex justify-center items-center h-full w-[80px] bg-green-600 border-r border-white"></div>
