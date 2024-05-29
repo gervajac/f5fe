@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 export default function AddPlayer({ onCancel, leagues, actualize }: any) {
   const [player, setPlayer] = useState({

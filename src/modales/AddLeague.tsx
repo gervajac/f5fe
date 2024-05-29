@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 export default function AddLeague({ onCancel, actualize }: any) {
   const [league, setLeague] = useState({

@@ -1,11 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 export default function AddMatch({ onCancel, leagues, actualize }: any) {
   const [date, setDate] = useState<any>(null);
-  const [player, setPlayer] = useState({
-    fullname: "",
-    leagueId: "",
-  });
   const [players, setPlayers] = useState(leagues.players);
   const [tenPlayers, setTenPlayers] = useState<any>([]);
   const [teamOne, setTeamOne] = useState<any>([]);

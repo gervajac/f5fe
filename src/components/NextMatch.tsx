@@ -1,4 +1,3 @@
-import { useState } from "react";
 import axios from "axios";
 export default function NextMatch({ nextMatch, actualize }: any) {
   console.log(nextMatch, "NEXTMATCHH")
