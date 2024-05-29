@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { TableLeague } from "./components/TableLeague";
 
 export function Home() {
