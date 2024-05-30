@@ -4,8 +4,11 @@ import AddPlayer from "../modales/AddPlayer";
 import AddMatch from "../modales/AddMatch";
 import NextMatch from "./NextMatch";
 import RecentMatches from "./RecentMatches";
+import { PlayerAttendance } from "../interfaces/interfaces";
 import Ingreso from "../modales/Ingreso";
 import AddLeague from "../modales/AddLeague";
+import { Streak } from "./Streak";
+import { Assistance } from "./Assistance";
 export function TableLeague() {
   const [loginModal, setLoginModal] = useState(false);
   const [addPlayer, setAddPlayer] = useState(false);
@@ -16,6 +19,9 @@ export function TableLeague() {
   const [leagueData, setLeagueData] = useState<any>([]);
   const [players, setPlayers] = useState<any>([]);
   const [leaguesData, setLeaguesData] = useState<any>([]);
+  const [firePlayers, setFirePlayers] = useState([]);
+  const [coldPlayers, setColdPlayers] = useState([]);
+  const [attendance, setAttendance] = useState<Array<PlayerAttendance>>([]);
   const [ligasTotales, setLigasTotales] = useState<any>([]);
   const [loading, setLoading] = useState<any>(true);
   const [refresh, setRefresh] = useState<any>(false);
@@ -36,7 +42,7 @@ export function TableLeague() {
       try {
         console.log(leagueName, "nombre de liga");
         const resp = await axios.get(
-          `https://f5be.onrender.com/league/${encodeURIComponent(
+          `http://localhost:3002/league/${encodeURIComponent(
             leagueName
           )}/${shortBy}`
         );
@@ -46,6 +52,9 @@ export function TableLeague() {
         setLeaguesData(resp.data.league);
         setPlayers(resp.data.players);
         setRecentMatches(resp.data.recentMatches);
+        setColdPlayers(resp.data.losingplayers);
+        setFirePlayers(resp.data.fireplayers);
+        setAttendance(resp.data.perfectAttendence);
         setLoading(false);
         setNextMatch(resp.data.lastMatch);
         console.log(leagueData, "leaguedata");
@@ -206,7 +215,7 @@ export function TableLeague() {
                     strokeLinecap="round"
                   ></path>{" "}
                   <path
-                    d="M14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C20.1752 21.4816 19.3001 21.7706 18 21.8985"
+                    d="M14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C20.1752 21.4816 19.3002 21.7706 18 21.8985"
                     stroke="#d7da2b"
                     strokeWidth="1.5"
                     strokeLinecap="round"
@@ -290,9 +299,7 @@ export function TableLeague() {
                   <div className="w-[80px] h-full">
                     <img
                       className="flex justify-center items-center h-full w-full bg-green-600 border-r border-white"
-                      src={
-                        "https://www.si.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_768/MTk4ODI1ODE5OTExNDk3MDY3/imago1031145834h.jpg"
-                      }
+                      src={e.image}
                       alt=""
                     ></img>
                   </div>
@@ -315,6 +322,10 @@ export function TableLeague() {
               );
             })}
         </section>
+        {coldPlayers || firePlayers ? (
+          <Streak coldPlayers={coldPlayers} firePlayers={firePlayers} />
+        ) : null}
+        {attendance && <Assistance assistanceList={attendance} />}
         <div className="flex flex-col justify-start items-center w-full">
           <h1 className="font-semibold text-xl justify-center">
             Partidos Recientes

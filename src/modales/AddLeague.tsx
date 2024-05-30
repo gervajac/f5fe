@@ -22,7 +22,7 @@ export default function AddLeague({ onCancel, actualize }: any) {
 
     try {
       console.log(league, "ligaenviada");
-      await axios.post(`https://f5be.onrender.com/league`, league);
+      await axios.post(`http://localhost:3002/league`, league);
       onCancel();
       actualize();
     } catch (err) {

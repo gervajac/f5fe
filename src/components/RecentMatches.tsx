@@ -24,9 +24,9 @@ export default function RecentMatches({ recentMatches }: any) {
                   className="flex flex-row w-full bg-green-300 h-auto"
                 >
                   <div className="flex justify-center items-center w-[240px] h-full font-semibold text-yellow-700">
-                    {/* {e.date && e.date.slice(8, 10)}-
+                    {e.date && e.date.slice(8, 10)}-
                     {e.date && e.date.slice(5, 7)}-
-                    {e.date && e.date.slice(0, 4)} */}
+                    {e.date && e.date.slice(0, 4)}
                   </div>
                   <div className="flex flex-col justify-center items-center h-full w-full bg-green-600">
                     {e.winner &&

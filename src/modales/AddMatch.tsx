@@ -19,7 +19,7 @@ export default function AddMatch({ onCancel, leagues, actualize }: any) {
   const handleSendReserva = async () => {
     try {
       console.log(teamOne, teamTwo, date, "INFO");
-      const resp = await axios.post(`https://f5be.onrender.com/matches`, {
+      const resp = await axios.post(`http://localhost:3002/matches`, {
         team1: teamOne,
         team2: teamTwo,
         date: date,
