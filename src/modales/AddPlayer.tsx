@@ -20,7 +20,7 @@ export default function AddPlayer({ onCancel, leagues, actualize }: any) {
 
     try {
       console.log(player, "player");
-      await axios.post(`http://localhost:3002/players`, player);
+      await axios.post(`https://f5be.onrender.com//players`, player);
       onCancel();
       actualize();
     } catch (err) {
