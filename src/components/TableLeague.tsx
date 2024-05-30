@@ -42,7 +42,7 @@ export function TableLeague() {
       try {
         console.log(leagueName, "nombre de liga");
         const resp = await axios.get(
-          `https://f5be.onrender.com//league/${encodeURIComponent(
+          `https://f5be.onrender.com/league/${encodeURIComponent(
             leagueName
           )}/${shortBy}`
         );
