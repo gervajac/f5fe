@@ -20,7 +20,7 @@ export default function Ingreso({ onCancel, actualize }: any) {
     }
 
     try {
-      const resp: any = await axios.post(`https://f5be.onrender.com/players/login`, user);
+      const resp: any = await axios.post(`http://localhost:3002/players/login`, user);
       console.log(resp, "respdellogin")
       localStorage.setItem("token", resp.data.token)
       onCancel();
