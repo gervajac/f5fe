@@ -5,6 +5,7 @@ export default function Ingreso({ onCancel, actualize }: any) {
     fullname: "",
     password: "",
   });
+  const [errormsg, seterrormsg] = useState("");
 
   const handleChange = (field: any, value: any) => {
     setUser((prevData) => ({
@@ -14,19 +15,23 @@ export default function Ingreso({ onCancel, actualize }: any) {
   };
 
   const handleLogin = async () => {
-    console.log(user, "userrrrrr")
+    console.log(user, "userrrrrr");
     if (!user.fullname || !user.password) {
-      return alert("Completar todos los campos.");
+      seterrormsg("Completar todos los campos requeridos.");
     }
 
     try {
-      const resp: any = await axios.post(`https://f5be.onrender.com//players/login`, user);
-      console.log(resp, "respdellogin")
-      localStorage.setItem("token", resp.data.token)
+      const resp: any = await axios.post(
+        `https://f5be.onrender.com/players/login`,
+        user
+      );
+      console.log(resp, "respdellogin");
+      localStorage.setItem("token", resp.data.token);
       onCancel();
       actualize();
     } catch (err) {
       console.log(err);
+      seterrormsg("Credenciales incorrectas, intentá de nuevo.");
     }
   };
 
@@ -57,6 +62,9 @@ export default function Ingreso({ onCancel, actualize }: any) {
             ></input>
           </div>
         </div>
+        <h1 className="h-[40px] w-full text-center text-red-700">
+          {errormsg && errormsg}
+        </h1>
         <div className="flex flex-row w-full justify-center items-center h-auto space-x-4">
           <button
             className="bg-red-600 text-white font-semibold p-2 rounded-md"

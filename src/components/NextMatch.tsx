@@ -3,7 +3,7 @@ export default function NextMatch({ nextMatch, actualize, admin }: any) {
   console.log(nextMatch, "NEXTMATCHH");
   const HandleWinnerTeam1 = async () => {
     try {
-      const resp = await axios.patch(`https://f5be.onrender.com//matches/`, {
+      const resp = await axios.patch(`https://f5be.onrender.com/matches/`, {
         id: nextMatch._id,
         winner: nextMatch.team1,
         losser: nextMatch.team2,
@@ -18,7 +18,7 @@ export default function NextMatch({ nextMatch, actualize, admin }: any) {
 
   const HandleWinnerTeam2 = async () => {
     try {
-      const resp = await axios.patch(`https://f5be.onrender.com//matches/`, {
+      const resp = await axios.patch(`https://f5be.onrender.com/matches/`, {
         id: nextMatch._id,
         winner: nextMatch.team2,
         losser: nextMatch.team1,
@@ -33,7 +33,7 @@ export default function NextMatch({ nextMatch, actualize, admin }: any) {
 
   const HandleTie = async () => {
     try {
-      const resp = await axios.patch(`https://f5be.onrender.com//matches/`, {
+      const resp = await axios.patch(`https://f5be.onrender.com/matches/`, {
         id: nextMatch._id,
         winner: nextMatch.team2,
         losser: nextMatch.team1,
