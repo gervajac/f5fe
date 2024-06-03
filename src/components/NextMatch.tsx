@@ -74,10 +74,9 @@ export default function NextMatch({ nextMatch, actualize, admin }: any) {
             })}
         </div>
       </div>
-
+      <h1 className="text-lg font-semibold">Resultado</h1>
       {admin && (
         <div className="flex flex-row w-full justify-center items-center space-x-4 px-1">
-          <h1 className="text-lg font-semibold">Resultado</h1>
           <button
             onClick={() => HandleWinnerTeam1()}
             className="bg-green-600 rounded-lg p-1 font-semibold"

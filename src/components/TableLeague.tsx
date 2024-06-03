@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import AddPlayer from "../modales/AddPlayer";
 import AddMatch from "../modales/AddMatch";
@@ -10,6 +11,9 @@ import AddLeague from "../modales/AddLeague";
 import { Streak } from "./Streak";
 import { Assistance } from "./Assistance";
 export function TableLeague() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const league = queryParams.get("league");
   const [loginModal, setLoginModal] = useState(false);
   const [addPlayer, setAddPlayer] = useState(false);
   const [addMatch, setAddMatch] = useState(false);
@@ -27,11 +31,15 @@ export function TableLeague() {
   const [refresh, setRefresh] = useState<any>(false);
   const [shortBy, setShortBy] = useState("empty");
   const [admin, setAdmin] = useState(false);
-  const [leagueName, setLeagueName] = useState("FutbolMiercoles");
+  const [leagueName, setLeagueName] = useState(
+    league ? league : "FutbolMiercoles"
+  );
 
+  console.log(league, "LEAGUE??????");
   useEffect(() => {
     const fetchData = async () => {
       const accessToken: any = localStorage.getItem("token");
+      console.log(league, "LEAGUE??????");
       console.log(accessToken, "1");
       if (accessToken) {
         const tokenData = JSON.parse(atob(accessToken.split(".")[1]));
