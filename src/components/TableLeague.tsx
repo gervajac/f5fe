@@ -268,7 +268,7 @@ export function TableLeague() {
           />
         )}
         <div className="flex flex-row w-full bg-green-300 h-[40px] border-b-2 border-white">
-          <div className="flex justify-center items-center h-full w-[80px] bg-green-600 border-r border-white"></div>
+          <div className="flex justify-center items-center h-full w-[100px] bg-green-600 border-r border-white"></div>
           <div className="flex justify-center items-center h-full w-full bg-green-600">
             Nombre
           </div>
@@ -303,11 +303,11 @@ export function TableLeague() {
               return (
                 <div
                   key={e.id}
-                  className="flex flex-row w-full bg-green-300 h-[40px]"
+                  className="flex flex-row w-full bg-green-300 h-[60px]"
                 >
-                  <div className="w-[80px] h-full">
+                  <div className="w-[100px] h-full">
                     <img
-                      className="flex justify-center items-center h-full w-full bg-green-600 border-r border-white"
+                      className="flex object-cover justify-center items-center h-full w-full bg-green-600 border-r border-white"
                       src={e.image}
                       alt=""
                     ></img>

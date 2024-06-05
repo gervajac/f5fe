@@ -234,7 +234,7 @@ export default function AddMatch({ onCancel, leagues, actualize }: any) {
                       <h1 className="w-full">{e}</h1>
                       <button
                         onClick={() => {
-                          const eliminate = tenPlayers.filter(
+                          const eliminate = teamTwo.filter(
                             (p: string) => p !== e
                           );
                           setTeamTwo(eliminate);
